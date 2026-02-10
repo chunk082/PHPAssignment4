@@ -1,4 +1,11 @@
-<?php include '../partials/header.php'; ?>
+<?php
+require_once '../../models/incident.php';
+
+$incidents = Incident::getAll();
+
+include '../partials/header.php';
+?>
+
 
 <div class="container-fluid mt-4 px-4">
     <div class="row">
