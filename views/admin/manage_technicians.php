@@ -2,14 +2,14 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-require '../../db/database.php';
+require './db/database.php';
 
 // Fetch the technicians
 $sql = "SELECT techID, firstName, lastName, email, phone FROM technicians
         ORDER BY lastName";
 $technicians = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-include '../partials/header.php';
+require __DIR__ . '/../partials/header.php';
 ?>
 
 <div class="container-fluid mt-4 px-4">
@@ -17,7 +17,7 @@ include '../partials/header.php';
 
         <!-- This is the sidebar -->
         <div class="col-lg-3 col-xl-2">
-            <?php include '../partials/sidebar.php'; ?>
+            <?php require __DIR__ . '/../partials/sidebar.php'; ?>
         </div>
 
         <!-- Thisis the main content -->
@@ -123,4 +123,4 @@ include '../partials/header.php';
     </div>
 </div>
 
-<?php include '../partials/footer.php'; ?>
+<?php require __DIR__ . '/../partials/footer.php'; ?>

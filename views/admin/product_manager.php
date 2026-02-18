@@ -2,12 +2,14 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-require '../../db/database.php';
+require './db/database.php';
 
 $sql = "SELECT productCode, name, version, releaseDate FROM products";
 $products = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-include '../partials/header.php';
+require __DIR__ . '/../partials/header.php';
+
+
 ?>
 
 <div class="container-fluid mt-4 px-4">
@@ -15,7 +17,7 @@ include '../partials/header.php';
 
         <!-- This is the sidebar -->
         <aside class="col-lg-3 col-xl-2">
-            <?php require '../partials/sidebar.php'; ?>
+            <?php require __DIR__ . '/../partials/sidebar.php'; ?>
         </aside>
 
         <!-- Main content of the site -->
@@ -118,4 +120,4 @@ include '../partials/header.php';
 </div>
 
 
-<?php include '../partials/footer.php'; ?>
+<?php require __DIR__ . '/../partials/footer.php'; ?>

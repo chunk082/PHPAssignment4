@@ -1,14 +1,16 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-// controllers/manage_customers.php
 
-require '../db/database.php';
-require '../models/customer.php';
+//Protect route (Admin only)
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: index.php');
+    exit();
+}
+
+require_once __DIR__ . '/../models/customer.php';
 
 $customerModel = new Customer($db);
 $customers = $customerModel->getAll();
 
-
-require '../views/admin/manage_customer.php';
+//Load view
+require __DIR__ . '/../views/admin/manage_customer.php';
 ?>

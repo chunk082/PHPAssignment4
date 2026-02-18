@@ -1,8 +1,15 @@
 <?php
-require_once '../models/incident.php';
+
+//Admin protection
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: index.php');
+    exit();
+}
+
+require __DIR__ . '/../models/incident.php';
 
 // fetch incidents from the model
 $incidents = Incident::getAll();
 
-// load the view and pass $incidents
-require '../views/admin/display_incident.php';
+// Load the view
+require __DIR__ . '/../views/admin/display_incident.php';

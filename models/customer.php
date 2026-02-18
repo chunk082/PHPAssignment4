@@ -3,6 +3,20 @@ require_once __DIR__ . '/../db/database.php';
 
 class Customer
 {
+
+    public static function getByID($customerID)
+{
+    global $db;
+
+    $sql = "SELECT * FROM customers
+            WHERE customerID = :customerID";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute([':customerID' => $customerID]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
     public static function getAll()
     {
         global $db;

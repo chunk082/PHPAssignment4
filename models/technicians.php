@@ -31,6 +31,18 @@ class Technician
         ]);
     }
 
+    // get the technicians to allow login
+    public static function getByEmail($email)
+{
+    global $db;
+
+    $sql = "SELECT * FROM technicians WHERE email = :email";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([':email' => $email]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
     // Deletes the Technians
     public static function delete($techID)
     {

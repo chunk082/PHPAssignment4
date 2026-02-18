@@ -1,18 +1,16 @@
 <?php
-require_once '../../models/incident.php';
+//require __DIR__ . '/../../models/incident.php';
+//$incidents = Incident::getAll();
 
-$incidents = Incident::getAll();
-
-include '../partials/header.php';
+require __DIR__ . '/../partials/header.php';
 ?>
-
 
 <div class="container-fluid mt-4 px-4">
     <div class="row">
 
         <!-- This is the sidebar -->
         <aside class="col-lg-3 col-xl-2 mb-4">
-            <?php include '../partials/sidebar.php'; ?>
+            <?php require __DIR__ . '/../partials/sidebar.php'; ?>
         </aside>
 
         <!-- This is the main content -->
@@ -70,10 +68,10 @@ include '../partials/header.php';
 
                                         <td>
                                             <?php if ($incident['dateClosed'] === null) : ?>
-                                                <a href="assign_incident.php?incidentID=<?= $incident['incidentID'] ?>"
-                                                   class="btn btn-sm btn-primary">
+                                               <a href="index.php?action=assign_incident&incidentID=<?= $incident['incidentID'] ?>" class="btn btn-primary">
                                                     Assign
                                                 </a>
+
                                             <?php else : ?>
                                                 <span class="text-muted">Closed</span>
                                             <?php endif; ?>
@@ -93,4 +91,4 @@ include '../partials/header.php';
     </div>
 </div>
 
-<?php include '../partials/footer.php'; ?>
+<?php require __DIR__ . '/../partials/footer.php'; ?>

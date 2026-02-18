@@ -1,6 +1,6 @@
 <?php
-require_once '../../db/database.php';
-include '../partials/header.php';
+require_once './db/database.php';
+require __DIR__ . '/../partials/header.php';
 
 // This will load the dropdown items.
 
@@ -31,7 +31,7 @@ $technicians = $db->query("
 
         <!-- This is the sidebar -->
         <div class="col-lg-2">
-            <?php include '../partials/sidebar.php'; ?>
+            <?php require __DIR__ . '/../partials/sidebar.php'; ?>
         </div>
 
         <!-- Main Content of the site -->
@@ -121,4 +121,4 @@ $technicians = $db->query("
     </div>
 </div>
 
-<?php include '../partials/footer.php'; ?>
+<?php require __DIR__ . '/../partials/footer.php'; ?>

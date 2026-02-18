@@ -3,8 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require '../../db/database.php';
-require_once '../../models/country.php';
+require './db/database.php';
+require __DIR__ . '/../../models/country.php';
 
 // Search Function
 $search = filter_input(INPUT_GET, 'search');
@@ -32,7 +32,7 @@ if ($search) {
 
 $countries = Country::getAll();
 
-include '../partials/header.php';
+require __DIR__ . '/../partials/header.php';
 ?>
 
 <div class="container-fluid mt-4 px-4">
@@ -40,7 +40,7 @@ include '../partials/header.php';
 
         <!-- Sidebar -->
         <div class="col-lg-2">
-            <?php include '../partials/sidebar.php'; ?>
+            <?php require __DIR__ . '/../partials/sidebar.php'; ?>
         </div>
 
         <!-- Main Content -->
@@ -301,4 +301,4 @@ include '../partials/header.php';
 </div>
 <?php endforeach; ?>
 
-<?php include '../partials/footer.php'; ?>
+<?php require __DIR__ . '/../partials/footer.php'; ?>
